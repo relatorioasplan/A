@@ -23,3 +23,6 @@ function envio() { //Função de enviar via whatsapp
     }
 
 }
+function popup(texto) { //função popup de aviso na tela
+    alert(texto);
+}
