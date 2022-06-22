@@ -1,29 +1,25 @@
-function MudaSelect() {//troca os projetos de acordo com a gerencia
+function copiar() { //função copiar
+    const texto = document.getElementById('relatorio');
+    texto.select();
+    document.execCommand('copy');
+    alert("Texto Copiado");
 
-    var selectSetor = document.getElementById('municipio');
-       
-    //remove itens
-    var length = selectSetor.options.length;
-    var i;
-    for (i = selectSetor.options.length - 1; i >= 0; i--) {
-        selectSetor.remove(i);
+}
+function limpar() { //função limpar tela onde reseta os valores e desativas os quadros novamente
+    document.getElementById("municipio").value = "";
+    document.getElementById("relatorio").value = "";
+   
+}
+
+function envio() { //Função de enviar via whatsapp
+
+    var texto = document.getElementById("relatorio").value;
+    if (texto === "") {
+        popup("ERRO, 'Relatorio' encontra-se em branco");
+    }
+    else {
+        texto = window.encodeURIComponent(texto);
+        window.open("https://api.whatsapp.com/send?1=pt_BR&text=" + texto, "_blank");
     }
 
-    var inicial = document.createElement('option');
-    inicial.value = "";
-    inicial.text = "--Selecione o Municipio--";
-    selectSetor.add(inicial);
-
-        fetch('Municipio.txt')
-            .then(response => response.text())
-            .then(text => {
-                const array = text.split("\r\n");
-                const Select = document.getElementById("municipio");
-                array.forEach((array) => {
-                    option = new Option(array, array);
-                    Select.options[Select.options.length] = option;
-                })
-
-            });
-
-    }
+}
