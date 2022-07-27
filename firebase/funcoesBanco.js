@@ -149,6 +149,9 @@ function Processa (MeusDados){
 
                 }
             } }}
+            }if (controle == 0 )
+            {
+                document.getElementById("relatorio").value += "Não constam obras";
             }
         }
             else {
@@ -157,10 +160,7 @@ function Processa (MeusDados){
                 //puxa banco
             }
         var testeaaaa = document.getElementById("relatorio").value;
-        if (controle == 0 )
-        {
-            document.getElementById("relatorio").value += "Não constam obras";
-        }
+        
             //IF - FAZER VERIFICAÇÃO SE HÁ DADOS SALVOS NO BANCO DE DADOS
             //ELSE
             document.getElementById("relatorio").value +=  "\n\n_Aluguel Social_\n";
