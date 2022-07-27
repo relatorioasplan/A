@@ -58,7 +58,7 @@ function Processa (MeusDados){
     var IRREGULARIDADE;
     var ACAO2;
     var ACAO;
-    
+    var controle = 0;
     if(municipio_tela == "")
     {
         
@@ -75,7 +75,6 @@ function Processa (MeusDados){
                 for (var i = 0; i<tamanhoTabela;i++){//tamanhoTabela
                     MUNICIPIO = MeusDados[i]['MUNICIPIO'];
                     if(MUNICIPIO == municipio_tela ){
-                        debugger
                         PROGRAMA= MeusDados[i]['PROGRAMA'];
                         if(PROGRAMA != 'ALUGUEL SOCIAL' && PROGRAMA != 'GOIÁS SOCIAL'){
                     PROCESSO= MeusDados[i]['PROCESSO'];
@@ -100,22 +99,38 @@ function Processa (MeusDados){
 
                     let arrDATA_DE_VIGENCIA = DATA_DE_VIGENCIA.split("/");
                     if(arrDATA_DE_VIGENCIA[2] >=2019 || SITUACAO_DA_OBRA == "EM ANDAMENTO" || SITUACAO_DA_OBRA == "PARALISADA" || SITUACAO_DA_OBRA == "SOBRESTADO"){
-                        
+                        controle = 1;
 
-                var tamanho = SITUACAO_DA_OBRA.length;
-                var tranforma = SITUACAO_DA_OBRA.toLocaleLowerCase().slice(1,tamanho);
-                var aux = SITUACAO_DA_OBRA[0].toLocaleUpperCase() + tranforma;
+                let tamanho = SITUACAO_DA_OBRA.length;
+                let tranforma = SITUACAO_DA_OBRA.toLocaleLowerCase().slice(1,tamanho);
+                let aux = SITUACAO_DA_OBRA[0].toLocaleUpperCase() + tranforma;
                 if (arrDATA_DE_VIGENCIA[2]<2019)
                 {
                     document.getElementById("relatorio").value += "\nAnterior à gestão atual";
                 }
                 document.getElementById("relatorio").value += "\n" + aux + "\n";
                 document.getElementById("relatorio").value += PROCESSO + "\n";
-                document.getElementById("relatorio").value += BAIRRO + " - " +OBJETO + " PREVISTA\n";
-                //IF CONCLUIDO OU ENTREGUE? SIM: document.getElementById("relatorio").value += "Concluido/Entregue: " + QUANT_DE_PARCELAS_REALIZADAS_BENEFICIARIOS_CADASTRADOS +  "\n";
+                if(MODALIDADE !="COMUNITÁRIO"){
+
+                
+                if(QUANT_PREVISTA > 1){
+                document.getElementById("relatorio").value += BAIRRO + " - " +OBJETO + "s PREVISTAS\n";
                 if (SITUACAO_DA_OBRA == "CONCLUÍDA" || SITUACAO_DA_OBRA == "ENTREGUE"){
-                document.getElementById("relatorio").value += "Concluido/Entregue: "+ QUANT_DE_PARCELAS_REALIZADAS_BENEFICIARIOS_CADASTRADOS+ "\n";
+                    document.getElementById("relatorio").value += "Concluído/Entregue: "+ QUANT_DE_PARCELAS_REALIZADAS_BENEFICIARIOS_CADASTRADOS+ " UHs\n";
+                    }
                 }
+                else{
+                document.getElementById("relatorio").value += BAIRRO + " - " +OBJETO + " PREVISTA\n";
+                if (SITUACAO_DA_OBRA == "CONCLUÍDA" || SITUACAO_DA_OBRA == "ENTREGUE"){
+                    document.getElementById("relatorio").value += "Concluído/Entregue: "+ QUANT_DE_PARCELAS_REALIZADAS_BENEFICIARIOS_CADASTRADOS+ " UH\n";
+                    }
+                }
+                //IF CONCLUIDO OU ENTREGUE? SIM: document.getElementById("relatorio").value += "Concluido/Entregue: " + QUANT_DE_PARCELAS_REALIZADAS_BENEFICIARIOS_CADASTRADOS +  "\n";
+                
+            }
+            else{
+                document.getElementById("relatorio").value += BAIRRO + " - " +OBJETO + "\n";
+            }
                 if(RECURSO_FEDERAL_MUNICIPAL_OSC_PREVISTO_RS == "R$ 0,00" ||RECURSO_FEDERAL_MUNICIPAL_OSC_PREVISTO_RS == "(vazio)" || RECURSO_FEDERAL_MUNICIPAL_OSC_PREVISTO_RS == undefined)
                 {
                     document.getElementById("relatorio").value += "Valor total/valor estadual previsto: "+ RECURSO_ESTADUAL_PREVISTO_RS + "\n";
@@ -125,7 +140,7 @@ function Processa (MeusDados){
                     document.getElementById("relatorio").value += "Valor Total: "+ VALOR_TOTAL_DA_OBRA_PREVISTO_RS + "\n";
                     document.getElementById("relatorio").value += "Valor estadual previsto: "+ RECURSO_ESTADUAL_PREVISTO_RS + "\n";
                     document.getElementById("relatorio").value += "Valor estadual entregue: "+ RECURSO_ESTADUAL_ENTREGUE + "\n";
-                    document.getElementById("relatorio").value += "Valor contra partida: "+ RECURSO_FEDERAL_MUNICIPAL_OSC_PREVISTO_RS + "\n";
+                    document.getElementById("relatorio").value += "Valor contrapartida: "+ RECURSO_FEDERAL_MUNICIPAL_OSC_PREVISTO_RS + "\n";
                 }
                 document.getElementById("relatorio").value += "Convenente: "+ CONVENENTE+ "\n";
                 document.getElementById("relatorio").value +=  '*' + ENCAMINHAMENTO_PARA_SOLUCAO + "\n";
@@ -137,21 +152,20 @@ function Processa (MeusDados){
             }
         }
             else {
-                document.getElementById("relatorio").value += "*" + municipio_tela + "* - "  +"\n";
-                document.getElementById("relatorio").value +=  "\n_Crédito Parceria_\n\n";
+                document.getElementById("relatorio").value += "*" + municipio_tela + "* - "  +"DATA\n";
+                document.getElementById("relatorio").value +=  "\n_Crédito Parceria_\n";
                 //puxa banco
             }
-        
+        var testeaaaa = document.getElementById("relatorio").value;
+        if (controle == 0 )
+        {
+            document.getElementById("relatorio").value += "Não constam obras";
+        }
             //IF - FAZER VERIFICAÇÃO SE HÁ DADOS SALVOS NO BANCO DE DADOS
             //ELSE
-            console.log("chegou aqui 1")
-            document.getElementById("relatorio").value +=  "\n\n_Aluguel Social_\n\n";
+            document.getElementById("relatorio").value +=  "\n\n_Aluguel Social_\n";
             document.getElementById("relatorio").value +=  "\n\n_Goiás Social_\n\n";
         }
-
-        
-
-console.log("chegou aqui")
     }
 
 function salvarBD(AluguelSocial, CreditoParceria, GoiasSocial, Municipio, DataRelatorio) {
