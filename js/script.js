@@ -8,7 +8,7 @@ function copiar() { //função copiar
 function limpar() { //função limpar tela onde reseta os valores e desativas os quadros novamente
     document.getElementById("municipio").value = "";
     document.getElementById("relatorio").value = "";
-   
+
 }
 
 function envio() { //Função de enviar via whatsapp
@@ -28,30 +28,30 @@ function popup(texto) { //função popup de aviso na tela
 }
 
 function relatorioAsplan() {
-//     var municipio = document.getElementById("municipio").value;
-//     if(municipio == "")
-//     {
-        
-//     }
-//     else{    
-//     document.getElementById("relatorio").value = "";
-    
-//     var teste = document.querySelector('input[name="inlineRadioOptions"]:checked').value;
-//             //Verificação se é ou nao ponto de controle
-//             if (teste === "0") {
-//                 document.getElementById("relatorio").value +=  "*" + municipio + "*\n";
-//                 document.getElementById("relatorio").value +=  "\n_Crédito Parceria_\n\n";
-//             }
-//             else {
-//                 document.getElementById("relatorio").value += "*" + municipio + "* - "  +"\n";
-//                 document.getElementById("relatorio").value +=  "\n_Crédito Parceria_\n\n";
-//             }
+    //     var municipio = document.getElementById("municipio").value;
+    //     if(municipio == "")
+    //     {
 
-//             //IF - FAZER VERIFICAÇÃO SE HÁ DADOS SALVOS NO BANCO DE DADOS
-//             //ELSE
-//             document.getElementById("relatorio").value +=  "\n\n_Aluguel Social_\n\n";
-//             document.getElementById("relatorio").value +=  "\n\n_Goiás Social_\n\n";
-            
-// }
-LerBD();
+    //     }
+    //     else{    
+    //     document.getElementById("relatorio").value = "";
+
+    //     var teste = document.querySelector('input[name="inlineRadioOptions"]:checked').value;
+    //             //Verificação se é ou nao ponto de controle
+    //             if (teste === "0") {
+    //                 document.getElementById("relatorio").value +=  "*" + municipio + "*\n";
+    //                 document.getElementById("relatorio").value +=  "\n_Crédito Parceria_\n\n";
+    //             }
+    //             else {
+    //                 document.getElementById("relatorio").value += "*" + municipio + "* - "  +"\n";
+    //                 document.getElementById("relatorio").value +=  "\n_Crédito Parceria_\n\n";
+    //             }
+
+    //             //IF - FAZER VERIFICAÇÃO SE HÁ DADOS SALVOS NO BANCO DE DADOS
+    //             //ELSE
+    //             document.getElementById("relatorio").value +=  "\n\n_Aluguel Social_\n\n";
+    //             document.getElementById("relatorio").value +=  "\n\n_Goiás Social_\n\n";
+
+    // }
+    LerBD();
 }

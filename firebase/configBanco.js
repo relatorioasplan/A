@@ -1,6 +1,6 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-(function () { 
-const firebaseConfig = {
+(function () {
+  const firebaseConfig = {
     apiKey: "AIzaSyAPrAucubsvABWK0wmZ2vR6hEEQybsMNdU",
     authDomain: "bdasplan.firebaseapp.com",
     databaseURL: "https://bdasplan-default-rtdb.firebaseio.com",
