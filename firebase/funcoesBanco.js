@@ -127,7 +127,7 @@ function Processa(MeusDados) {
                     }
                 }
             } if (controle == 0) {
-                document.getElementById("relatorio").value += "Não constam obras\n";
+                document.getElementById("relatorio").value += "Não constam obras\n\n";
             }
 
             let dbRef = firebase.database().ref();
