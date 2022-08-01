@@ -59,6 +59,7 @@ function Processa(MeusDados) {
                         DATA_DE_VIGENCIA = MeusDados[i]['DATA DE VIGÊNCIA'];
                         if (DATA_DE_VIGENCIA !== undefined) {
                             let arrDATA_DE_VIGENCIA = DATA_DE_VIGENCIA.split("/");
+                            SITUACAO_DA_OBRA = MeusDados[i]['SITUACAO DA OBRA'];
                             if (arrDATA_DE_VIGENCIA[2] >= 2019 || SITUACAO_DA_OBRA == "EM ANDAMENTO" || SITUACAO_DA_OBRA == "PARALISADA" || SITUACAO_DA_OBRA == "SOBRESTADO") {
                                 controle = 1;
                                 PROCESSO = MeusDados[i]['PROCESSO'];
@@ -66,7 +67,6 @@ function Processa(MeusDados) {
                                 MODALIDADE = MeusDados[i]['MODALIDADE'];
                                 BAIRRO = MeusDados[i]['BAIRRO'];
                                 OBJETO = MeusDados[i]['OBJETO'];
-                                SITUACAO_DA_OBRA = MeusDados[i]['SITUACAO DA OBRA'];
                                 QUANT_PREVISTA = MeusDados[i]['QUANT. PREVISTA'];
                                 ENCAMINHAMENTO_PARA_SOLUCAO = MeusDados[i]['ENCAMINHAMENTO PARA SOLUÇÃO '];
                                 QUANT_DE_PARCELAS_REALIZADAS_BENEFICIARIOS_CADASTRADOS = MeusDados[i]['QUANT. DE PARCELAS REALIZADAS / BENEFICIÁRIOS CADASTRADOS'];
